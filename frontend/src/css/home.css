@@ -1,0 +1,154 @@
+/* Home Container */
+.home {
+  padding: 30px;
+  min-height: 100vh;
+  color: white;
+}
+
+.fullmovie-list {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start; /* Required for sticky sidebar to work */
+}
+
+/* --- UPGRADED: Sticky Sidebar --- */
+.Genre-list {
+    flex: 0 0 220px;
+    position: sticky; 
+    top: 30px; /* Sticks 30px from the top of the screen */
+    height: fit-content; /* Ensures the container doesn't stretch */
+}
+
+.genres {
+    list-style: none;
+}
+
+.genres a {
+    font-size: large;
+    display: block;
+    color: #ccc;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    font-weight: 200;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+}
+
+.genres a:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #00f3ff;
+    padding-left: 1rem;
+}
+
+.movie-list {
+    border-radius: 40px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #141414;
+}
+
+/* --- MODERN SEARCH BAR (Overriding Shadcn defaults) --- */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Target the ButtonGroup container */
+.search-form > div {
+    background-color: #0a0a0a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 16px !important;
+    padding: 4px 8px !important;
+    align-items: center;
+    box-shadow: none !important;
+    transition: border-color 0.3s ease;
+}
+
+.search-form > div:focus-within {
+    border-color: #444 !important;
+}
+
+/* Target the Input */
+.search-form input {
+    background-color: transparent !important;
+    border: none !important;
+    color: #e5e5e5 !important;
+    font-size: 1rem !important;
+    box-shadow: none !important;
+    padding-left: 12px !important;
+}
+
+/* Remove default focus rings */
+.search-form input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Target the Button */
+.search-form button {
+    background: transparent !important;
+    border: none !important;
+    color: #a3a3a3 !important;
+    position: relative;
+    padding: 0 16px !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+}
+
+/* The clever trick: Drawing the vertical separator line using CSS alone */
+.search-form button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 24px;
+    background-color: #2a2a2a;
+}
+
+.search-form button:hover {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+}
+
+/* Error Message */
+.error-msg {
+  color: #ff5555;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Loading */
+.Loading {
+  color: #ccc;
+  text-align: center;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2em;
+}
+
+@media (max-width: 1200px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
