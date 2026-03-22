@@ -32,7 +32,7 @@ export const addFavorite = (movie) => API.post("/favorites", movie);
 export const removeFavorite = (movieId) => API.delete(`/favorites/${movieId}`);
 
 
-const API_KEY="5d569482387d7f4de5ed75ac0438918f"
+const API_KEY=import.meta.env.VITE_TMDB_KEY;
 
 export const getPopularMovie= async (page = 1)=> {
     const response=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`);
