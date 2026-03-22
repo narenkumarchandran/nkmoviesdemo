@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectdb= async ()=>{
     try{
-        await mongoose.connect("mongodb+srv://narenkumarchandran:<db_password>@nkmoviedatabase.d4wxfgp.mongodb.net/?appName=NKMovieDatabase", {
+        await mongoose.connect(process.env.MONGO_URI, {
             dbName: "NkMovies", // tell mongoose which DB to use
         });
         console.log("Connected to database");

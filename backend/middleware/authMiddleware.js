@@ -10,7 +10,7 @@ function auth(req, res, next) {
   try {
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.id; // or decoded.id if you only need the ID
+    req.user = decoded; // or decoded.id if you only need the ID
     next();
   } catch (err) {
     return res.status(401).json({ msg: "Invalid or expired token" });
