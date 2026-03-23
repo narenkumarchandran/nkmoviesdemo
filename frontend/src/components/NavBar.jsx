@@ -10,8 +10,8 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("token"); // Delete the token
     localStorage.removeItem("username"); // Delete the username
-    navigate("/"); // Send them back to the login page
-    window.location.reload(); // Refresh to clear the context state
+    window.location.href = '/'; 
+ 
   };
 
   return (
