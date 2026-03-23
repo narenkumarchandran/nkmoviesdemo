@@ -83,6 +83,9 @@ NkMovies is a complete full-stack web application designed to replicate a premiu
 │ MongoDB Database │
 │(Users, Favorites)│
 └──────────────────┘
+
+```
+
 ### Technology Stack
 
 #### Frontend
@@ -103,12 +106,12 @@ NkMovies is a complete full-stack web application designed to replicate a premiu
 
 ## 📋 Prerequisites
 
-Make sure you have the following installed on your machine:
+### Make sure you have the following installed on your machine:
 - **Node.js** (v18.x or higher)
 - **MongoDB** (Local instance or MongoDB Atlas URI)
 - **Git**
 
-You will also need:
+### You will also need:
 - A free API key from [The Movie Database (TMDB)](https://developer.themoviedb.org/docs/getting-started)
 
 ---
@@ -119,17 +122,17 @@ You will also need:
 ```bash
 git clone [https://github.com/yourusername/nk-movies.git](https://github.com/yourusername/nk-movies.git)
 cd nk-movies
-
+```
 ### 2. Setup the Backend
 ```bash
 cd backend
 npm install
-
+```
 ### 3. Setup the Frontend
 ```bash
 cd ../frontend
 npm install
-
+```
 ---
 
 ## 🔐 Environment Variables
@@ -140,14 +143,14 @@ You must create two .env files to run this project locally. Never commit these f
 PORT=5000
 MONGO_URI=your_mongodb_connection_string_here
 JWT_SECRET=your_super_secret_jwt_string
-
+```
 ### Frontend .env (Create in /frontend/.env)
 
 ```bash
 # If using Vite, variables MUST start with VITE_
 VITE_TMDB_API_KEY=your_tmdb_api_key_here
 VITE_API_BASE_URL=http://localhost:5000
-
+```
 ---
 ## 🏃‍♂️ Quick Start Guide
 ### Open two terminal windows to run both servers simultaneously.
@@ -159,14 +162,14 @@ cd backend
 node index.js
 # Server running on port 5000
 # MongoDB Connected
-
+```
 ### Terminal 2 (Frontend):
 
 ```bash
 cd frontend
 npm run dev
 # App running at http://localhost:5173
-
+```
 ---
 
 ## 📁 Project Structure
@@ -192,7 +195,7 @@ nk-movies/
 │
 ├── .gitignore                # Root gitignore
 └── README.md                 # Project documentation
-
+```
 ## 🔌 API Endpoints
 
 ### Internal Backend API (`http://localhost:5000`)
