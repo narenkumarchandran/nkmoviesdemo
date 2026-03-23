@@ -7,13 +7,13 @@
 
 .fullmovie-list {
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem; /* REDUCED from 3rem for tighter layout */
     align-items: flex-start; /* Required for sticky sidebar to work */
 }
 
 /* --- UPGRADED: Sticky Sidebar --- */
 .Genre-list {
-    flex: 0 0 220px;
+    flex: 0 0 180px; /* REDUCED from 220px to save screen space */
     position: sticky; 
     top: 30px; /* Sticks 30px from the top of the screen */
     height: fit-content; /* Ensures the container doesn't stretch */
@@ -108,11 +108,11 @@
     transform: translateY(-50%);
     width: 1px;
     height: 24px;
-    background-color: #2a2a2a;
+    background-color: #0791b7;
 }
 
 .search-form button:hover {
-    background-color: #1a1a1a !important;
+    background-color: #044e52 !important;
     color: #fff !important;
 }
 
@@ -133,22 +133,192 @@
 /* Movie Grid */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2em;
+  /* UPGRADED: Automatically scales the number of columns to fit the screen */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem; /* REDUCED from 2em for tighter fit */
 }
 
-@media (max-width: 1200px) {
-  .movie-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Note: Media queries removed because auto-fill handles responsiveness perfectly! */
+
+/* --- PAGINATION CONTROLS --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px; /* Added a little extra top padding */
+    margin-top: 20px;
 }
-@media (max-width: 900px) {
-  .movie-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
+.pagination-btn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #00f3ff;
+    border: 1px solid #00f3ff;
+    border-radius: 8px; /* Slightly rounder to match your search bar */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover transition */
 }
-@media (max-width: 600px) {
-  .movie-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
+/* Glowing Hover Effect */
+.pagination-btn:hover:not(:disabled) {
+    color: #000000;
+    background: #00f3ff ;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Disabled State Styling */
+.pagination-btn:disabled {
+    cursor: not-allowed;
+    color: #555;
+    border-color: #444;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.pagination-info {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 1px; /* Makes the text look a bit more cinematic */
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Phones & Tablets)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Lock the screen width to prevent the whole site from swiping left/right */
+    body, html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* 2. Reduce overall padding */
+    .home {
+        padding: 15px; 
+    }
+
+    /* 3. Stack the sidebar and the movie list vertically */
+    .fullmovie-list {
+        flex-direction: column; 
+    }
+
+    /* 4. Fix the movie list container so it doesn't stretch off-screen */
+    .movie-list {
+        min-width: 0; /* Magic flexbox fix */
+        max-width: 100%;
+        padding: 15px; /* Slightly less padding on mobile */
+    }
+
+    /* 5. HORIZONTAL SCROLL WITH 4 LAYERS */
+    .movie-grid {
+        display: grid;
+        width: 100%; 
+        
+        /* THE FIX: Lock the rows and columns so they never stretch! */
+        grid-template-rows: repeat(4, 1fr); /* 1fr forces all 4 rows to be the exact same height */
+        grid-auto-columns: 140px; /* Forces every auto-generated column to be exactly 140px wide */
+        grid-auto-flow: column; 
+        
+        overflow-x: auto; 
+        gap: 1rem;
+        padding-bottom: 15px;
+        scroll-behavior: smooth;
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
+    }
+    /* Hide scrollbar for Chrome/Safari */
+    .movie-grid::-webkit-scrollbar {
+        display: none; 
+    }
+
+    /* 6. Perfect mobile card size */
+  .movie-grid > .movie-card {
+        width: 100%; 
+        height: 100%;
+    }
+    /* Movie Card Container */
+    .movie-card {
+      width: 100%;
+      max-width: 250px; 
+      margin: 0 auto;
+      cursor: pointer;
+      
+      /* NEW: Setup for the hover animation */
+      position: relative; 
+      z-index: 1; 
+      /* Using a cubic-bezier makes the "pop" feel snappy and premium */
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s; 
+    }
+
+    /* 🚨 NEW: The Netflix Pop-out Effect */
+    .movie-card:hover {
+      transform: scale(1.1); /* Makes the whole card 10% bigger */
+      z-index: 10; /* Brings it to the very front so it overlaps the other cards */
+    }
+
+    .movie-poster {
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease; /* Smooth glow transition */
+    }
+
+    /* Make the cyan glow more intense when the whole card pops out */
+    .movie-card:hover .movie-poster {
+      box-shadow: 0 15px 35px rgba(0, 243, 255, 0.6); 
+    }
+    /* 7. Turn the sticky sidebar into a horizontal scrolling menu */
+    .Genre-list {
+        flex: none;
+        width: 100%;
+        position: static; 
+        margin-bottom: 15px;
+    }
+
+    .genres {
+        display: flex;
+        overflow-x: auto; 
+        gap: 10px;
+        padding-bottom: 10px; 
+        scrollbar-width: none;
+    }
+    
+    .genres::-webkit-scrollbar {
+        display: none;
+    }
+
+    .genres a {
+        white-space: nowrap; 
+        margin-bottom: 0;
+        border-left: none; 
+        border-bottom: 2px solid transparent; 
+    }
+
+    .genres a:hover {
+        padding-left: 0.75rem; 
+        border-left: none;
+        border-bottom: 2px solid #00f3ff; 
+    }
+
+    /* 8. Make the search bar fit smaller screens */
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-form > div {
+        width: 100%;
+        display: flex;
+    }
+
+    .search-form input {
+        flex-grow: 1; 
+    }
 }

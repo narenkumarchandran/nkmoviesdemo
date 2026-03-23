@@ -65,3 +65,69 @@ a{
 }
 
 
+/* --- MOBILE NAVBAR FIX --- */
+@media (max-width: 768px) {
+    .navbar {
+        /* Keep them on the same line instead of stacking */
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px; /* Tighter padding for mobile */
+    }
+    
+    .nav-actions {
+        width: auto; /* Don't take up the full width */
+        justify-content: flex-end; /* Push to the right */
+    }
+
+    .logout-btn {
+        /* Make the button more compact so it fits nicely next to the logo */
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    /* --- Desktop Styles --- */
+.right-content {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between Home, Welcome, Favorites, Logout */
+}
+
+.welcome-msg {
+    color: #00f3ff;
+    font-weight: 600;
+}
+
+/* --- Mobile Fix (Inside your Media Query) --- */
+@media (max-width: 768px) {
+    .header { /* or .navbar, whichever your parent is */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    /* 🚨 The Secret Sauce: Hide the welcome text on mobile */
+    .welcome-msg {
+        display: none; 
+    }
+
+    .right-content {
+        gap: 12px; /* Tighter gaps for mobile */
+    }
+
+    /* Make links and buttons slightly smaller to ensure they fit */
+    .right-content a, 
+    .logout-btn {
+        font-size: 0.85rem;
+        white-space: nowrap; /* Prevents text from breaking into two lines */
+    }
+
+    .logout-btn {
+        padding: 4px 10px;
+        border: 1px solid #00f3ff;
+        background: transparent;
+        color: #00f3ff;
+        border-radius: 4px;
+    }
+}
+}

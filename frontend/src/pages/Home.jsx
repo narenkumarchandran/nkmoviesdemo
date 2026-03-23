@@ -196,7 +196,7 @@ function Home() {
                                     .fill()
                                     .map((_, index) => (
                                         // FIX: Added the key prop here
-                                        <Skeleton key={index} height={300} borderRadius={10} baseColor="#243624ff" />
+                                        <Skeleton key={index} height={300} borderRadius={10} baseColor="rgb(2, 94, 104)" />
                                     ))}
                             </div>) :
                             (<div className="movie-grid" style={{ minHeight: '300px' }}>
@@ -219,29 +219,30 @@ function Home() {
                                     )))}
                             </div>)
                         }
-
-                        {/* Pagination Controls */}
-                        {!loading && movies.length > 0 && totalPages > 1 && (
-                            <div className="pagination" style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '20px' }}>
-                                <button
-                                    onClick={() => setPage(p => Math.max(1, p - 1))}
-                                    disabled={page === 1}
-                                    style={{ padding: '10px 20px', cursor: page === 1 ? 'not-allowed' : 'pointer', background: 'transparent', color: '#00f3ff', border: '1px solid #00f3ff', borderRadius: '5px', fontWeight: 'bold' }}
-                                >
-                                    Previous
-                                </button>
-                                <span style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: '#fff' }}>
-                                    Page {page} of {totalPages}
-                                </span>
-                                <button
-                                    onClick={() => setPage(p => p < totalPages ? p + 1 : p)}
-                                    disabled={page === totalPages}
-                                    style={{ padding: '10px 20px', cursor: page === totalPages ? 'not-allowed' : 'pointer', background: 'transparent', color: '#00f3ff', border: '1px solid #00f3ff', borderRadius: '5px', fontWeight: 'bold' }}
-                                >
-                                    Next
-                                </button>
-                            </div>
-                        )}
+                            {/* Pagination Controls */}
+                            {!loading && movies.length > 0 && totalPages > 1 && (
+                                <div className="pagination">
+                                    <button
+                                        className="pagination-btn"
+                                        onClick={() => setPage(p => Math.max(1, p - 1))}
+                                        disabled={page === 1}
+                                    >
+                                        Previous
+                                    </button>
+                                    
+                                    <span className="pagination-info">
+                                        Page {page} of {totalPages}
+                                    </span>
+                                    
+                                    <button
+                                        className="pagination-btn"
+                                        onClick={() => setPage(p => p < totalPages ? p + 1 : p)}
+                                        disabled={page === totalPages}
+                                    >
+                                        Next
+                                    </button>
+                                </div>
+                            )}
 
                     </div>
                 </div>

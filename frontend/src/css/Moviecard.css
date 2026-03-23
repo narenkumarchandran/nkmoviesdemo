@@ -48,9 +48,11 @@
   justify-content: right;
   transition: opacity 0.3s ease;
 }
-.movie-card:hover .movie-poster {
+/* .movie-card:hover .movie-poster {
   box-shadow: 0 10px 40px rgba(0, 243, 255, 0.8);
-}
+} */
+
+
 
 .movie-card:hover .movie-poster img {
   transform: scale(1.05);
