@@ -219,13 +219,13 @@ nk-movies/
 4. Add your `VITE_TMDB_API_KEY` and `VITE_API_BASE_URL` to the Environment Variables settings.
 5. Deploy!
 
-### Backend (Render)
-1. Log in to Render and create a new **Web Service**.
-2. Connect your GitHub repository.
+### Backend (Vercel)
+1. Go back to your Vercel dashboard and click **Add New Project**.
+2. Import the exact same GitHub repository.
 3. Set the **Root Directory** to `backend`.
-4. Build Command: `npm install` | Start Command: `node index.js`.
-5. Add your `MONGO_URI` and `JWT_SECRET` in the Environment Variables tab.
-6. Make sure to update your backend's CORS configuration to accept requests from your new Vercel domain!
+4. Add your `MONGO_URI` and `JWT_SECRET` in the Environment Variables tab.
+5. Deploy!
+*(Note: To run an Express server on Vercel, ensure you have a `vercel.json` file in your backend folder to configure the serverless functions).*
 
 ---
 
