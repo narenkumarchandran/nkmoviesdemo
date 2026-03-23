@@ -32,7 +32,7 @@ function NavBar() {
         {token ? (
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to="/">Login</Link>
         )}
       </div>
     </header>
