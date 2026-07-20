@@ -24,8 +24,8 @@ function WatchMovie() {
                 {/* Cinematic Player Bento Box */}
                 <div className="relative w-full mx-auto aspect-video shadow-2xl rounded-[2rem] overflow-hidden border border-border/40 bg-black flex-shrink-0 group ring-1 ring-white/5">
                     <iframe 
-                        src={`https://www.vidking.net/embed/movie/${id}?color=e50914&autoPlay=true`} 
-                        title="Vidking Movie Player"
+                        src={`https://vidlink.pro/movie/${id}`} 
+                        title="VidLink Movie Player"
                         className="w-full h-full absolute inset-0 z-10"
                         frameBorder="0" 
                         allow="autoplay; fullscreen" 
